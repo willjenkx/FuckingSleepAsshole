@@ -1,17 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 
 namespace FuckingSleepAsshole;
 
 public sealed class YouThereService : BackgroundService
 {
-    private readonly IConfiguration _configuration;
-
-    public YouThereService(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
     private DateTime LastSeen { get; set; } = DateTime.Now;
     
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

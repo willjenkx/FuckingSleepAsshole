@@ -1,9 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace FuckingSleepAsshole;
 
-public sealed class WhereMouse
+public static class WhereMouse
 { 
     [DllImport( "user32.dll", SetLastError = true)]
     public static extern bool GetCursorPos(out Point lpPoint);

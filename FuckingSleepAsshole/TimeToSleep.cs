@@ -1,9 +1,8 @@
-﻿using System.Net.Mime;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace FuckingSleepAsshole;
 
-public sealed class TimeToSleep 
+public static class TimeToSleep 
 {
     [DllImport("PowrProf.dll", SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
