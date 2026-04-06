@@ -5,7 +5,7 @@ namespace FuckingSleepAsshole;
 public static class WhereMouse
 { 
     [DllImport( "user32.dll", SetLastError = true)]
-    public static extern bool GetCursorPos(out Point lpPoint);
+    private static extern bool GetCursorPos(out Point lpPoint);
     
     public static Point GetPosition()
     {

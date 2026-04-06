@@ -4,7 +4,7 @@ namespace FuckingSleepAsshole;
 
 public sealed class YouThereService : BackgroundService
 {
-    private DateTime LastSeen { get; set; } = DateTime.Now;
+    private DateTime LastSeen { get; set; } = DateTime.UtcNow;
     
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -14,15 +14,15 @@ public sealed class YouThereService : BackgroundService
             var mousePos = WhereMouse.GetPosition();
             
             if (lastPos != mousePos)
-                LastSeen = DateTime.Now;
+                LastSeen = DateTime.UtcNow;
 
-            if (LastSeen.AddMinutes(60) < DateTime.Now)
+            if (LastSeen.AddMinutes(60) < DateTime.UtcNow)
             {
                 TimeToSleep.Now();
                 // I'm not sure where the code will be executing at this point, so just a lil delay
                 await Task.Delay(5000, stoppingToken);
                 // this will hopefully prevent an infinite sleep loop :)
-                LastSeen = DateTime.Now;
+                LastSeen = DateTime.UtcNow;
             }
 
             
