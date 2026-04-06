@@ -18,8 +18,11 @@ public sealed class YouThereService : BackgroundService
 
             if (LastSeen.AddMinutes(60) < DateTime.Now)
             {
-                LastSeen = DateTime.Now;
                 TimeToSleep.Now();
+                // I'm not sure where the code will be executing at this point, so just a lil delay
+                await Task.Delay(5000, stoppingToken);
+                // this will hopefully prevent an infinite sleep loop :)
+                LastSeen = DateTime.Now;
             }
 
             await Task.Delay(1000, stoppingToken);
