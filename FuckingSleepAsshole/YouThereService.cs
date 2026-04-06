@@ -25,6 +25,9 @@ public sealed class YouThereService : BackgroundService
                 LastSeen = DateTime.Now;
             }
 
+            
+            lastPos = mousePos;
+            
             await Task.Delay(1000, stoppingToken);
         }
     }
